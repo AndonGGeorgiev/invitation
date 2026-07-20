@@ -42,7 +42,7 @@
 
   h1 {
     font-family: 'Great Vibes', cursive;
-    font-size: 3.8rem;
+    font-size: 3.2rem;
     font-weight: 400;
     color: #a8562f;
     letter-spacing: 2px;
@@ -51,7 +51,7 @@
   }
 
   p {
-    font-size: 1.40rem;
+    font-size: 1.35rem;
     line-height: 1.9;
     color: #6b4632;
     margin-bottom: 10px;
@@ -59,9 +59,8 @@
 
   .details {
     margin-top: 22px;
-    font-size: 1.18rem;
+    font-size: 1.25rem;
     color: #7a4a2f;
-   margin-bottom: 8px;
   }
 
   .btn {
@@ -98,27 +97,150 @@
       font-size: 1.05rem;
     }
   }
+
+  /* --- Плавно поява ред по ред --- */
+  .reveal-line {
+    display: block;
+    opacity: 0;
+    transform: translateY(18px);
+    animation: fadeInUp 0.9s ease forwards;
+    animation-delay: calc(var(--i) * 0.45s);
+  }
+
+  h1.reveal-line {
+    display: inline-block;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .btn.reveal-line {
+    display: inline-block;
+  }
+
+  /* --- Конфети --- */
+  #confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+  }
 </style>
 </head>
 <body>
 
+  <canvas id="confetti-canvas"></canvas>
+
   <div class="card">
-    <h1>Кръщенето на Михаела</h1>
+    <h1 class="reveal-line" style="--i:0">Кръщенето на Михаела</h1>
 
     <p>
-      Аз съм слънчице засмяно, на една годинка само,<br>
-      и ви каня от сърце, на моето кръщене.<br>
-      А вие радостта ми споделете и скъпи гости ми бъдете!!!
+      <span class="reveal-line" style="--i:1">Аз съм слънчице засмяно, на една годинка само,</span>
+      <span class="reveal-line" style="--i:2">и ви каня от сърце, на моето кръщене.</span>
+      <span class="reveal-line" style="--i:3">А вие радостта ми споделете и скъпи гости ми бъдете!!!</span>
     </p>
 
     <div class="details">
-      Светото тайнство ще се извърши на 08.11.2026 г. от 11.30ч.<br>
-      в храм<a href="https://www.google.com/maps/place/%D0%92%D1%8A%D0%B7%D0%B4%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5+%D0%BD%D0%B0+%D0%A1%D0%B2.+%D0%9A%D1%80%D1%8A%D1%81%D1%82+%D0%93%D0%BE%D1%81%D0%BF%D0%BE%D0%B4%D0%B5%D0%BD/@42.6718538,23.3207377,175m/data=!3m1!1e3!4m6!3m5!1s0x40aa845566523cd3:0x96ab92c86af09831!8m2!3d42.6717653!4d23.3204385!16s%2Fg%2F11b66f8ty9?entry=ttu&g_ep=EgoyMDI2MDcxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="loc-link">"Св. Кръст Господен"</a> - гр. София.<br>
-      Ще почерпим за здраве от 14.30ч. в ресторант<a href="https://www.google.com/maps/place/Petrus/@42.6776507,23.3280841,267m/data=!3m1!1e3!4m6!3m5!1s0x40aa85a904538d57:0x144b8ca0fc293c04!8m2!3d42.6777838!4d23.3291069!16s%2Fg%2F11b760w73x?entry=ttu&g_ep=EgoyMDI2MDcxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="loc-link">"Petrus"</a> - гр. София.
+      <span class="reveal-line" style="--i:4">Светото тайнство ще се извърши на 08.11.2026 г. от 11.30ч.</span>
+      <span class="reveal-line" style="--i:5">в храм<a href="https://www.google.com/maps/place/%D0%92%D1%8A%D0%B7%D0%B4%D0%B2%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5+%D0%BD%D0%B0+%D0%A1%D0%B2.+%D0%9A%D1%80%D1%8A%D1%81%D1%82+%D0%93%D0%BE%D1%81%D0%BF%D0%BE%D0%B4%D0%B5%D0%BD/@42.6718538,23.3207377,175m/data=!3m1!1e3!4m6!3m5!1s0x40aa845566523cd3:0x96ab92c86af09831!8m2!3d42.6717653!4d23.3204385!16s%2Fg%2F11b66f8ty9?entry=ttu&g_ep=EgoyMDI2MDcxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="loc-link">"Св. Кръст Господен"</a> - гр. София.</span>
+      <span class="reveal-line" style="--i:6">Ще почерпим за здраве от 14.30ч. в ресторант<a href="https://www.google.com/maps/place/Petrus/@42.6776507,23.3280841,267m/data=!3m1!1e3!4m6!3m5!1s0x40aa85a904538d57:0x144b8ca0fc293c04!8m2!3d42.6777838!4d23.3291069!16s%2Fg%2F11b760w73x?entry=ttu&g_ep=EgoyMDI2MDcxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="loc-link">"Petrus"</a> - гр. София.</span>
     </div>
 
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdpctt2M-c9PSWedSUsGfStZZojzUE0PC_pD6pfyMFDDD5LzQ/viewform?usp=publish-editor" class="btn" target="_blank">Към анкетата</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdpctt2M-c9PSWedSUsGfStZZojzUE0PC_pD6pfyMFDDD5LzQ/viewform?usp=publish-editor" class="btn reveal-line" style="--i:7" target="_blank">Към анкетата</a>
   </div>
+
+  <script>
+    // --- Лек конфети ефект при зареждане ---
+    (function () {
+      const canvas = document.getElementById('confetti-canvas');
+      const ctx = canvas.getContext('2d');
+      let w, h;
+
+      function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      const colors = ['#c97b4a', '#a8562f', '#f2c14e', '#f6e3c5', '#8a5a3b', '#ffffff'];
+      const particleCount = 140;
+      const particles = [];
+
+      function createParticle() {
+        return {
+          x: Math.random() * w,
+          y: -20 - Math.random() * h,
+          size: 6 + Math.random() * 8,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          speedY: 2 + Math.random() * 3,
+          speedX: (Math.random() - 0.5) * 2,
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 8,
+          shape: Math.random() > 0.5 ? 'circle' : 'rect'
+        };
+      }
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(createParticle());
+      }
+
+      let elapsed = 0;
+      const duration = 6000; // колко дълго да продължи конфетито (мс)
+      let lastTime = null;
+
+      function draw(time) {
+        if (lastTime === null) lastTime = time;
+        const dt = time - lastTime;
+        lastTime = time;
+        elapsed += dt;
+
+        ctx.clearRect(0, 0, w, h);
+
+        const fadeOut = elapsed > duration ? Math.max(0, 1 - (elapsed - duration) / 800) : 1;
+
+        particles.forEach(p => {
+          p.y += p.speedY;
+          p.x += p.speedX;
+          p.rotation += p.rotationSpeed;
+
+          if (p.y > h + 20) {
+            p.y = -20;
+            p.x = Math.random() * w;
+          }
+
+          ctx.save();
+          ctx.globalAlpha = fadeOut;
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rotation * Math.PI) / 180);
+          ctx.fillStyle = p.color;
+          if (p.shape === 'circle') {
+            ctx.beginPath();
+            ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+            ctx.fill();
+          } else {
+            ctx.fillRect(-p.size / 2, -p.size / 4, p.size, p.size / 2);
+          }
+          ctx.restore();
+        });
+
+        if (fadeOut > 0) {
+          requestAnimationFrame(draw);
+        } else {
+          ctx.clearRect(0, 0, w, h);
+        }
+      }
+
+      requestAnimationFrame(draw);
+    })();
+  </script>
 
 </body>
 </html>
